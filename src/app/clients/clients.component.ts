@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'app/api.service';
 import { ClientsService } from 'app/clients.service';
+
+
 
 @Component({
   selector: 'app-clients',
@@ -10,7 +13,7 @@ import { ClientsService } from 'app/clients.service';
 export class ClientsComponent implements OnInit {
   public tableData1
 
-  constructor(public _clientsService:ClientsService) { }
+  constructor(private _clientsService:ClientsService, private api:ApiService) { }
 
   public passClient(index: number) {
     this._clientsService.setClient(this._clientsService.getClients()[index])
@@ -21,6 +24,9 @@ export class ClientsComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.api.gTableClients().subscribe(data => {
+      this._clientsService.setTable(data)
+    });
     this.tableData1 = this._clientsService.getTable();
   }
 

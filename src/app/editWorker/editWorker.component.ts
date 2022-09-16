@@ -10,32 +10,32 @@ import { WorkersService } from 'app/workers.service';
 
 export class EditWorkerComponent implements OnInit {
   public workersData
-  username = new FormControl();
-  phoneNumber = new FormControl();
+  dateAdmission = new FormControl();
   ID = new FormControl();
   firstName = new FormControl();
   lastName = new FormControl();
-  address = new FormControl();
-  city = new FormControl();
-  country = new FormControl();
-  email = new FormControl();
+  dateBirth = new FormControl();
+  age = new FormControl();
+  password = new FormControl();
+  role = new FormControl();
+  office = new FormControl();
   
   constructor(private _workersService: WorkersService) { }
 
   public editWorker() {
-    console.log(this.username.value)
+    console.log(this.firstName.value)
   }
 
   ngOnInit() {
     let worker = this._workersService.getWorker()
-    this.username.setValue(worker[8]);
-    this.phoneNumber.setValue(worker[2]);
-    this.ID.setValue(worker[4]);
     this.firstName.setValue(worker[0]);
     this.lastName.setValue(worker[1]);
-    this.address.setValue(worker[5]);
-    this.city.setValue(worker[6]);
-    this.country.setValue(worker[7]);
-    this.email.setValue(worker[4]);
+    this.ID.setValue(worker[2])
+    this.dateAdmission.setValue(worker[3])
+    this.dateBirth.setValue(worker[4])
+    this.age.setValue(worker[5])
+    this.password.setValue(worker[6])
+    this.role.setValue(worker[7])
+    this.office.setValue(worker[8])
   }
 }

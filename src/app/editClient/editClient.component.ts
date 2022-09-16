@@ -9,7 +9,6 @@ import { ClientsService } from 'app/clients.service';
 })
 
 export class EditClientComponent implements OnInit {
-  //@Input() tableData1!: ClientsComponent;
   public clientsData
   username = new FormControl();
   phoneNumber = new FormControl();
@@ -20,6 +19,7 @@ export class EditClientComponent implements OnInit {
   city = new FormControl();
   country = new FormControl();
   email = new FormControl();
+  password = new FormControl();
   
   constructor(private _clientsService: ClientsService) { }
 
@@ -31,12 +31,13 @@ export class EditClientComponent implements OnInit {
     let client = this._clientsService.getClient()
     this.username.setValue(client[8]);
     this.phoneNumber.setValue(client[2]);
-    this.ID.setValue(client[4]);
+    this.ID.setValue(client[3]);
     this.firstName.setValue(client[0]);
     this.lastName.setValue(client[1]);
     this.address.setValue(client[5]);
     this.city.setValue(client[6]);
     this.country.setValue(client[7]);
     this.email.setValue(client[4]);
+    this.password.setValue(client[9]);
   }
 }

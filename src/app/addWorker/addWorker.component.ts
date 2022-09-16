@@ -8,20 +8,20 @@ import { FormControl } from '@angular/forms';
 })
 export class AddWorkerComponent implements OnInit {
 
-  username = new FormControl();
-  phoneNumber = new FormControl();
+  dateAdmission = new FormControl();
   ID = new FormControl();
   firstName = new FormControl();
   lastName = new FormControl();
-  address = new FormControl();
-  city = new FormControl();
-  country = new FormControl();
-  email = new FormControl();
+  dateBirth = new FormControl();
+  age = new FormControl();
+  password = new FormControl();
+  role = new FormControl();
+  office = new FormControl();
 
   constructor() { }
 
   public addWorker() {
-    console.log(this.username.value)
+    console.log(this.firstName.value)
   }
 
   ngOnInit() {

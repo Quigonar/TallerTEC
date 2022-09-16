@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ClientsListI } from './models/clientslist.interface';
 
 declare interface TableData {
   headerRow: string[];
@@ -15,19 +16,20 @@ export class ClientsService {
 
   constructor() { 
     this.tableData = {
-      headerRow: [ 'First Name', 'Last Name', 'Phone Number', 'ID', 'Email', 'Address', 'City', 'Country', 'Username'],
-      dataRows: [
-          ['Marcos', 'González', '12345678', '123456789', 'asdf@gmail.com', 'Por ahi', 'San Jose', 'Costa Rica', 'username1'],
-          ['David', 'De La Hoz', '12345678', '123456789', 'asdf@gmail.com', 'Por ahi', 'San Jose', 'Costa Rica', 'username2'],
-          ['Kenichi', 'Hayakawa', '12345678', '123456789', 'asdf@gmail.com', 'Por ahi', 'San Jose', 'Costa Rica', 'username3'],
-          ['Marcelo', 'Truque', '12345678', '123456789', 'asdf@gmail.com', 'Por ahi', 'San Jose', 'Costa Rica', 'username4'],
-      ]
+      headerRow: [ 'First Name', 'Last Name', 'Phone Number', 'ID', 'Email', 'Address', 'City', 'Country', 'Username', 'Password'],
+      dataRows: []
     }
   }
   
   getTable() {
     return this.tableData
-    };
+  };
+  setTable(clients:ClientsListI[]){
+    this.tableData.dataRows = []
+    for (var client of clients) {
+      this.tableData.dataRows.push([client.FirstN,client.LastN,client.PhoneNum,client.ID,client.Email,client.Address,client.City,client.Country,client.Username,client.Password]) 
+    }
+  };
   getClients(){
     return this.tableData.dataRows
   };
