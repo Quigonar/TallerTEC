@@ -16,8 +16,8 @@ import { ModifyAppointmentsComponent } from 'app/appointments/modifyappointment.
 
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'home',           component: HomeComponent },
-    { path: 'user',           component: UserComponent },
+    /**{ path: 'home',           component: HomeComponent },
+    { path: 'user',           component: UserComponent },**/
     { path: 'billing',        component: BillingComponent },
     { path: 'clients',        component: ClientsComponent },
     { path: 'add-client',      component: AddClientComponent },

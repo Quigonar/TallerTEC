@@ -67,7 +67,7 @@ export class PrebillingComponent implements OnInit {
     ServicioCita.value=this.CitaFact[5];
     SucursalCita.value=this.CitaFact[6];
     FechayHoraCita.value=this.CitaFact[7];
-    PriceAmmt.innerHTML="Precio: 1234567890";
+    PriceAmmt.innerHTML="Price: 1234567890";
 
     this.Factura[0]=this.CitaFact[0];
     this.Factura[1]=this.CitaFact[1];

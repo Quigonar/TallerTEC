@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'app/api.service';
 import { CitaService } from 'app/citaservice';
+import { AppointmentsListI } from 'app/models/appointmentslist.interface';
 
 
 
@@ -10,10 +12,10 @@ import { CitaService } from 'app/citaservice';
 })
 
 export class NewAppointmentsComponent implements OnInit {
-
+  appointment:AppointmentsListI;
   newCita:string[];
 
-  constructor(private _citaService:CitaService) { }
+  constructor(private _citaService:CitaService, private api:ApiService) { }
 
   public createnewapp(){
     var NameClientCita = document.getElementById("AppointmentNombre") as HTMLInputElement | null;
@@ -31,14 +33,27 @@ export class NewAppointmentsComponent implements OnInit {
     }else{
       this.newCita[0]=String(this._citaService.IDNewCita);
       this._citaService.IDNewCita++;
-      this.newCita[1]=NameClientCita.value;
+      /*this.newCita[1]=NameClientCita.value;
       this.newCita[2]=SurnameClientCita.value;
       this.newCita[3]=CedulaClientCita.value;
       this.newCita[4]=PlacaClientCitas.value;
       this.newCita[6]=SucursalCita.value;
       this.newCita[5]=ServicioCita.value;
       this.newCita[7]=FechayHoraCita.value;
-      this._citaService.appendCitas(this.newCita);
+      this._citaService.appendCitas(this.newCita);*/
+      this.appointment.AppointmentN = this.newCita[0]
+      this.appointment.ClientN = NameClientCita.value;
+      this.appointment.ClientLN = SurnameClientCita.value;
+      this.appointment.ClientID = CedulaClientCita.value;
+      this.appointment.LicenseP = PlacaClientCitas.value
+      this.appointment.Office = SucursalCita.value
+      this.appointment.Service = ServicioCita.value
+      this.appointment.DateTime = FechayHoraCita.value
+
+      this.api.addAppointment(this.appointment).subscribe(data => {
+        console.log(data);
+      })
+
       NameClientCita.disabled=true;
       SurnameClientCita.disabled=true;
       CedulaClientCita.disabled=true;
@@ -50,11 +65,22 @@ export class NewAppointmentsComponent implements OnInit {
       BackBut.innerHTML="Continuar";
       alert("Se ha agregado la cita,su número de cita es "+ this.newCita[0]+ " por favor presione continuar.");
 
+
     }
 
   }
 
   ngOnInit() { 
+    this.appointment = {
+      AppointmentN: '',
+      ClientN: '',
+      ClientLN: '',
+      ClientID: '',
+      LicenseP: '',
+      Office: '',
+      Service: '',
+      DateTime: ''
+    }
     this.newCita=["","","","","","","","",""]
   }
 

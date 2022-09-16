@@ -16,7 +16,7 @@ export class BillingService {
 
   constructor() { 
     this.tableData = {
-      headerRow: [ 'Número Cita','Nombre Cliente', 'Apellidos Cliente','Cédula Cliente','Placa', 'Servicio','Sucursal','Fecha/Hora','Precio','Nombre Empleado','Apellidos Empleado','Cédula Empleado'],
+      headerRow: [ 'Appointment #','Client Name', 'Client Surname','Client ID','License Plate', 'Service','Office','Date/Time','Price','Employee Name','Employee Surname','Employee ID'],
       dataRows: []
     }
   }

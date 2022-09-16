@@ -5,51 +5,51 @@
                 <div class="card">
                     <div class="header">
                         <h4 class="title">
-                            Lista Citas
+                            Appointment Modification
                         </h4>
-                        <p class="category">Lista de las Citas para borrar</p>
+                        <p class="category">Modification of the appointment space</p>
                     </div>
                     <div class="content">
                         <form>
-                            <h5>Cita por Modificar</h5>
+                            <h5>Appointment to modify</h5>
                             <input id="NumCita" name="Citas" disabled/>
 
-                            <h5>Información del Cliente</h5>
+                            <h5>Client's Info</h5>
                             <div class="row">
-                                <h6>Nombre Completo</h6>
+                                <h6>Full Name</h6>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Nombre</label>
+                                        <label>Name</label>
                                         <input type="text" class="form-control" placeholder="Nombre" id="ChangeAppointmentNombre">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Apellidos</label>
+                                        <label>Surname</label>
                                         <input type="text" class="form-control" placeholder="Apellidos"  id="ChangeAppointmentApellidos">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Cédula</label>
+                                        <label>ID</label>
                                         <input type="text" class="form-control" placeholder="1-2345-6789"  id="ChangeAppointmentCedula">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <h6>Detalles del vehículo</h6>
+                                <h6>Vehicle Details</h6>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Placa</label>
+                                        <label>License Plate</label>
                                         <input type="text" class="form-control" placeholder="Placa" id="ChangeAppointmentPlaca">
                                     </div>
                                 </div>
                             </div>                         
-                            <h5>Detalles de la Cita</h5>
+                            <h5>Appointmnent Details</h5>
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <label>Fecha y Hora</label>
+                                        <label>Date & Time</label>
                                         <input type="datetime-local" id="ChangeAppointmentFechaHora">
                                     </div>
                                 </div>
@@ -57,23 +57,30 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Sucursal</label>
-                                        <input type="text" class="form-control" placeholder="Sucursal" id="ChangeAppointmentSucursal">
+                                        <label>Office</label>
+                                        <input list="SucursalList" type="text" class="form-control" placeholder="Office" id="ChangeAppointmentSucursal">
+                                        <datalist id="SucursalList">
+                                            <option value="Cartago Centro">Cartago Centro</option>
+                                            <option value="Oreamuno de Cartago">Oreamuno de Cartago</option>
+                                            <option value="Pinares Curridabat">Pinares Curridabat</option>
+                                            <option value="Rio Oro Santa Ana">Rio Oro Santa Ana</option>
+                                            <option value="Ciudad Panama">Ciudad Panama</option>
+                                        </datalist>
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <label>Servicio</label>
+                                        <label>Service</label>
                                         <input list="ServiceList"type="text" class="form-control" placeholder="Servicio" id="ChangeAppointmentServicio">
                                         <datalist id="ServiceList">
-                                            <option value="cambio de aceite">cambio de aceite</option>
-                                            <option value="alineado">alineado</option>
-                                            <option value="tramado">tramado</option>
-                                            <option value="revisión 5km">revisión 5km</option>
-                                            <option value="revisión 10km">revisión 10km</option>                                        
-                                            <option value="revisión 20km">revisión 20km</option>
-                                            <option value="Reparación Caja Cambios">Reparación Caja Cambios</option>
-                                            <option value="Overhaul Motor">Overhaul Motor</option>
+                                            <option value="Cambio de aceite">Cambio de aceite</option>
+                                            <option value="Alineado">Alineado</option>
+                                            <option value="Tramado">Tramado</option>
+                                            <option value="Revisión de 5km">Revisión de 5km</option>
+                                            <option value="Revisión de 10km">Revisión de 10km</option>                                        
+                                            <option value="Revisión de 20km">Revisión de 20km</option>
+                                            <option value="Reparación de caja cambio">Reparación de caja cambio</option>
+                                            <option value="Overhaul de motor">Overhaul de motor</option>
                                         </datalist>
                                     
                                     </div>

@@ -27,6 +27,7 @@ export class ClientsService {
   setTable(clients:ClientsListI[]){
     this.tableData.dataRows = []
     for (var client of clients) {
+      //console.log(client.PhoneNum)
       this.tableData.dataRows.push([client.FirstN,client.LastN,client.PhoneNum,client.ID,client.Email,client.Address,client.City,client.Country,client.Username,client.Password]) 
     }
   };

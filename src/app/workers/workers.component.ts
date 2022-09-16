@@ -25,6 +25,7 @@ export class WorkersComponent implements OnInit {
   
   ngOnInit() {
     this.api.gTableWorkers().subscribe(data => {
+      console.log(data)
       this._workersService.setTable(data);
     });
     this.tableData1 = this._workersService.getTable();

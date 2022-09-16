@@ -18,20 +18,49 @@ export class ApiService {
     let dir = this.url + "cliente/lista"
     return this.http.get<ClientsListI[]>(dir)
   }
+  addClient(client:ClientsListI):Observable<ResponseI>{
+    //console.log(client)
+    let dir = this.url + "cliente/guardar"
+    return this.http.post<ResponseI>(dir,client)
+  }
+
+  editClientAPI(client:ClientsListI):Observable<ResponseI>{
+    //console.log(client)
+    let dir = this.url + "cliente/update"
+    return this.http.post<ResponseI>(dir,client)
+  }
+
   gTableWorkers():Observable<WorkersListI[]>{
     let dir = this.url + "trabajador/lista"
     return this.http.get<WorkersListI[]>(dir)
   }
+  addWorker(worker:WorkersListI):Observable<ResponseI>{
+    //console.log(worker)
+    let dir = this.url + "trabajador/guardar"
+    return this.http.post<ResponseI>(dir,worker)
+  }
+  editWorkerAPI(worker:WorkersListI):Observable<ResponseI>{
+    //console.log(worker)
+    let dir = this.url + "trabajador/update"
+    return this.http.post<ResponseI>(dir,worker)
+  }
+
   gTableAppointments():Observable<AppointmentsListI[]>{
     let dir = this.url + "cita/lista"
     return this.http.get<AppointmentsListI[]>(dir)
   }
-
-  addClient(client:ClientsListI):Observable<ResponseI>{
-    console.log(client)
-    let dir = this.url + "cliente/guardar"
-    return this.http.post<ResponseI>(dir,client)
+  addAppointment(appointment:AppointmentsListI):Observable<ResponseI>{
+    console.log(appointment)
+    let dir = this.url + "cita/guardar"
+    return this.http.post<ResponseI>(dir,appointment)
   }
+  editAppointmentAPI(appointment:AppointmentsListI):Observable<ResponseI>{
+    //console.log(appointment)
+    let dir = this.url + "cita/update"
+    return this.http.post<ResponseI>(dir,appointment)
+  }
+
+  
 
   //cliente/guardar
   //cliente/editar

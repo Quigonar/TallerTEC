@@ -18,7 +18,7 @@ export class CitaService {
 
   constructor() { 
     this.tableData = {
-      headerRow: [ 'Número Cita','Nombre Cliente', 'Apellidos Cliente','Cédula Cliente','Placa', 'Servicio','Sucursal','Fecha/Hora'],
+      headerRow: [ 'Appointment #','Client Name', 'Client Surname','Client ID','License Plate', 'Service','Office','Date/Time'],
       dataRows: []
     }
     this.IDNewCita=0;
@@ -30,6 +30,7 @@ export class CitaService {
   setTable(citas:AppointmentsListI[]){
     this.tableData.dataRows = []
     for (var cita of citas) {
+      console.log(cita.Service)
       this.tableData.dataRows.push([cita.AppointmentN,cita.ClientN,cita.ClientLN,cita.ClientID,cita.LicenseP,cita.Service,cita.Office,cita.DateTime]) 
     }
   }

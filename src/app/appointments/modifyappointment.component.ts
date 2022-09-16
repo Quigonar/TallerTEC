@@ -1,6 +1,8 @@
 import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'app/api.service';
 import { CitaService } from 'app/citaservice';
+import { AppointmentsListI } from 'app/models/appointmentslist.interface';
 
 @Component({
   selector: 'app-modifyappointment',
@@ -13,9 +15,10 @@ export class ModifyAppointmentsComponent implements OnInit {
   
   public Cita: string[];
   public ModCita: string[];
+  appointmentE:AppointmentsListI;
  
 
-  constructor(private _citaService:CitaService) { }
+  constructor(private _citaService:CitaService, private api:ApiService) { }
   
   public ModifyCita(){
     var NewNameClientCita = document.getElementById("ChangeAppointmentNombre") as HTMLInputElement | null;
@@ -29,7 +32,7 @@ export class ModifyAppointmentsComponent implements OnInit {
     if((NewCedulaClientCita.value=="")||(NewNameClientCita.value=="")||(NewSurnameClientCita.value=="")||(NewPlacaClientCitas.value=="")||(NewFechayHoraCita.value=="")||(NewSucursalCita.value=="")||(NewServicioCita.value=="")){
       alert("Se deben de completar todas las casillas")
     }else{
-      this.ModCita[0]=this.Cita[0];
+      /*this.ModCita[0]=this.Cita[0];
       this.ModCita[1]=NewNameClientCita.value;
       this.ModCita[2]=NewSurnameClientCita.value;
       this.ModCita[3]=NewCedulaClientCita.value;
@@ -37,7 +40,20 @@ export class ModifyAppointmentsComponent implements OnInit {
       this.ModCita[5]=NewServicioCita.value;
       this.ModCita[6]=NewSucursalCita.value;
       this.ModCita[7]=NewFechayHoraCita.value;
-      this._citaService.setCitas(this.ModCita);
+      this._citaService.setCitas(this.ModCita);*/
+      this.appointmentE.AppointmentN = this.Cita[0]
+      this.appointmentE.ClientN = NewNameClientCita.value;
+      this.appointmentE.ClientLN = NewSurnameClientCita.value;
+      this.appointmentE.ClientID = NewCedulaClientCita.value;
+      this.appointmentE.LicenseP = NewPlacaClientCitas.value
+      this.appointmentE.Office = NewSucursalCita.value
+      this.appointmentE.Service = NewServicioCita.value
+      this.appointmentE.DateTime = NewFechayHoraCita.value
+
+      this.api.editAppointmentAPI(this.appointmentE).subscribe(data => {
+        console.log(data);
+      })
+
       alert("Se han efectuado cambios sobre la cita " + this.Cita[0]);
     }
     
@@ -66,6 +82,16 @@ export class ModifyAppointmentsComponent implements OnInit {
     SucursalCita.value=this.Cita[6];
     FechayHoraCita.value=this.Cita[7];
     
+    this.appointmentE = {
+      AppointmentN: '',
+      ClientN: '',
+      ClientLN: '',
+      ClientID: '',
+      LicenseP: '',
+      Office: '',
+      Service: '',
+      DateTime: ''
+    }
 
   }
 

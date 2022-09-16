@@ -32,6 +32,7 @@ export class AppointmentsComponent implements OnInit {
 
   ngOnInit() { 
     this.api.gTableAppointments().subscribe(data => {
+      //console.log(data)
       this._citaService.setTable(data)
     });
     this.tableData1 = this._citaService.getTable();

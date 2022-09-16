@@ -25,6 +25,7 @@ export class ClientsComponent implements OnInit {
   
   ngOnInit() {
     this.api.gTableClients().subscribe(data => {
+      console.log(data)
       this._clientsService.setTable(data)
     });
     this.tableData1 = this._clientsService.getTable();

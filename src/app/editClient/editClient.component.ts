@@ -1,6 +1,8 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ApiService } from 'app/api.service';
 import { ClientsService } from 'app/clients.service';
+import { ClientsListI } from '../models/clientslist.interface'
 
 @Component({
   selector: 'app-editClient',
@@ -10,6 +12,8 @@ import { ClientsService } from 'app/clients.service';
 
 export class EditClientComponent implements OnInit {
   public clientsData
+  clientE: ClientsListI
+
   username = new FormControl();
   phoneNumber = new FormControl();
   ID = new FormControl();
@@ -21,13 +25,38 @@ export class EditClientComponent implements OnInit {
   email = new FormControl();
   password = new FormControl();
   
-  constructor(private _clientsService: ClientsService) { }
+  constructor(private _clientsService:ClientsService, private api:ApiService) { }
 
   public editClient() {
-    console.log(this.username.value)
+    this.clientE.Username = this.username.value
+    this.clientE.PhoneNum = this.phoneNumber.value
+    this.clientE.ID = this.ID.value
+    this.clientE.FirstN = this.firstName.value
+    this.clientE.LastN = this.lastName.value
+    this.clientE.Address = this.address.value
+    this.clientE.City = this.city.value
+    this.clientE.Country = this.country.value
+    this.clientE.Email = this.email.value
+    this.clientE.Password = this.password.value
+
+    this.api.editClientAPI(this.clientE).subscribe(data => {
+      console.log(data);
+    })
   }
 
   ngOnInit() {
+    this.clientE = {
+      Username: '',
+      PhoneNum: '',
+      ID: '',
+      FirstN: '',
+      LastN: '',
+      Address: '',
+      City: '',
+      Country: '',
+      Email: '',
+      Password: ''
+    }
     let client = this._clientsService.getClient()
     this.username.setValue(client[8]);
     this.phoneNumber.setValue(client[2]);
