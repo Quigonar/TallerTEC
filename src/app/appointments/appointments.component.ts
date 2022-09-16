@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'app/api.service';
 import { CitaService } from 'app/citaservice';
 
 
@@ -17,7 +18,7 @@ export class AppointmentsComponent implements OnInit {
 
   public tableData1: TableData;
 
-  constructor(public _citaService:CitaService) {
+  constructor(public _citaService:CitaService, private api:ApiService) {
   }
 
   public passCita(index:number){
@@ -30,6 +31,9 @@ export class AppointmentsComponent implements OnInit {
   }
 
   ngOnInit() { 
+    this.api.gTableAppointments().subscribe(data => {
+      this._citaService.setTable(data)
+    });
     this.tableData1 = this._citaService.getTable();
   }
  

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AppointmentsListI } from './models/appointmentslist.interface';
 
 declare interface TableData {
   headerRow: string[];
@@ -18,12 +19,7 @@ export class CitaService {
   constructor() { 
     this.tableData = {
       headerRow: [ 'Número Cita','Nombre Cliente', 'Apellidos Cliente','Cédula Cliente','Placa', 'Servicio','Sucursal','Fecha/Hora'],
-      dataRows: [
-        ['123','Marcos','Gonzáles Araya','1-0098-1234','ABC-123', 'Revision de motor','San Pedro', '2019-03-12T11:42'],
-        ['124','David', 'de la Hoz Agùirre','1-0420-0069','ABC-123', 'Revision de motor','Zapote','2022-08-10T21:49'],
-        ['125','Kenichi', 'Hayakawa Bolaños', '2-0315-0756','ABC-123', 'Revision de motor','Alajuela', '2022-01-05T22:52'],
-        ['126','Marcelo', 'Truque Montero','3-0536-0018','ABC-123', 'Revision de motor','Cartago' ,'2017-09-25T09:30'],
-    ]
+      dataRows: []
     }
     this.IDNewCita=0;
   }
@@ -31,6 +27,12 @@ export class CitaService {
   getTable() {
     return this.tableData
     };
+  setTable(citas:AppointmentsListI[]){
+    this.tableData.dataRows = []
+    for (var cita of citas) {
+      this.tableData.dataRows.push([cita.AppointmentN,cita.ClientN,cita.ClientLN,cita.ClientID,cita.LicenseP,cita.Service,cita.Office,cita.DateTime]) 
+    }
+  }
   setCitas(newdata: string[]){
     this.tableData.dataRows[this.lastindex]=newdata;
   };
