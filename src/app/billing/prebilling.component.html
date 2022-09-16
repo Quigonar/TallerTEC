@@ -1,0 +1,113 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <h4 class="title">
+                        Facturación
+                    </h4>
+                    <h5>
+                        Cita por Facturar
+                    </h5>
+                    <div class="row">
+                        <p>Cita:</p>
+                        <input id="NumCitaFact" name="Citas" disabled/>
+                    </div>
+                    <h5>Información del Cliente</h5>
+                    <div class="row">
+                        <h6>Nombre Completo</h6>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input disabled type="text" class="form-control" placeholder="Nombre" id="NombreClientFact">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Apellidos</label>
+                                <input disabled type="text" class="form-control" placeholder="Apellidos"  id="ApellidosClientFact">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Cédula</label>
+                                <input disabled type="text" class="form-control" placeholder="1-2345-6789"  id="CedulaClientFact">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <h6>Detalles del vehículo</h6>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Placa</label>
+                                <input disabled type="text" class="form-control" placeholder="Placa" id="PlacaFact">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Fecha y Hora</label>
+                                <input disabled type="datetime-local" id="FechaHoraFact">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Sucursal</label>
+                                <input disabled type="text" class="form-control" placeholder="Sucursal" id="SucursalFact">
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Servicio</label>
+                                <input  disabled type="text" class="form-control" placeholder="Servicio" id="ServicioFact">
+                                
+                             </div>
+                        </div>
+                        <p id="Precio"></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <form>
+                        <div class="row">
+                            <h5>Datos Empleado</h5>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input type="text" class="form-control" placeholder="Nombre" id="FactNameEm">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Apellidos</label>
+                                    <input type="text" class="form-control" placeholder="Apellido1"  id="FacSurnameEm">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Cédula</label>
+                                    <input type="text" class="form-control" placeholder="1-2345-6789"  id="CedulaEmpFact">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <button type="submit" class="btn btn-info btn-fill pull-right" id="BotonEmitir" (click)="EmitirFact()">
+                        Emitir Factura
+                    </button>
+                    <button (click)="DownPDF()" type="submit" class="btn btn-info btn-fill pull-right" id="BotonPDF">
+                        Descargar PDF factura
+                    </button>
+                    <a href="#/billing">
+                        <button type="submit" class="btn btn-info btn-fill pull-right" id="BackButton">
+                            Atrás
+                        </button>
+                    </a>
+                </div>        
+            </div>
+        </div>
+    </div>
+</div>

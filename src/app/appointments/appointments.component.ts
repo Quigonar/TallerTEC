@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CitaService } from 'app/citaservice';
+
 
 declare interface TableData {
   headerRow: string[];
@@ -15,18 +17,20 @@ export class AppointmentsComponent implements OnInit {
 
   public tableData1: TableData;
 
-  constructor() { }
-
-  ngOnInit() { 
-    this.tableData1 = {
-      headerRow: [ 'Client', 'License Plate', 'Branch Office', 'Service Needed', 'Date/Time'],
-      dataRows: [
-          ['Marcos González', 'ABC-123', 'San Jose', 'Revision de motor', '16-08-2022/13:00'],
-          ['David De La Hoz', 'ABC-123', 'San Jose', 'Revision de motor', '16-08-2022/13:00'],
-          ['Kenichi Hayakawa', 'ABC-123', 'San Jose', 'Revision de motor', '16-08-2022/13:00'],
-          ['Marcelo Truque', 'ABC-123', 'San Jose', 'Revision de motor', '16-08-2022/13:00'],
-      ]
-    };
+  constructor(public _citaService:CitaService) {
   }
 
+  public passCita(index:number){
+    this._citaService.setCita(this._citaService.getCitas()[index]);
+    this._citaService.lastindex=index;
+  }
+
+  public elimcita(index:number){
+
+  }
+
+  ngOnInit() { 
+    this.tableData1 = this._citaService.getTable();
+  }
+ 
 }

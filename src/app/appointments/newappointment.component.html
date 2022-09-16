@@ -1,0 +1,94 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Reservación Cita
+                        </h4>
+                        <p class="category">Reservación del espacio de cita</p>
+                    </div>
+                    <div class="content">
+                        <form>
+                            <h5>Información del Cliente</h5>
+                            <div class="row">
+                                <h6>Nombre Completo</h6>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Nombre</label>
+                                        <input type="text" class="form-control" placeholder="Nombre" id="AppointmentNombre">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Apellidos</label>
+                                        <input type="text" class="form-control" placeholder="Apellidos"  id="AppointmentApellidos">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Cédula</label>
+                                        <input type="text" class="form-control" placeholder="1-2345-6789"  id="AppointmentCedula">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <h6>Detalles del vehículo</h6>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Placa</label>
+                                        <input type="text" class="form-control" placeholder="Placa" id="AppointmentPlaca">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h5>Detalles de la Cita</h5>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Fecha y Hora</label>
+                                        <input type="datetime-local" id="AppointmentFechaHora">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Sucursal</label>
+                                        <input type="text" class="form-control" placeholder="Sucursal" id="AppointmentSucursal">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Servicio</label>
+                                        <input list="ServiceList" type="text" class="form-control" placeholder="Servicio" id="AppointmentServicio">
+                                        <datalist id="ServiceList">
+                                            <option value="cambio de aceite">cambio de aceite</option>
+                                            <option value="alineado">alineado</option>
+                                            <option value="tramado">tramado</option>
+                                            <option value="revisión 5km">revisión 5km</option>
+                                            <option value="revisión 10km">revisión 10km</option>                                        
+                                            <option value="revisión 20km">revisión 20km</option>
+                                            <option value="Reparación Caja Cambios">Reparación Caja Cambios</option>
+                                            <option value="Overhaul Motor">Overhaul Motor</option>
+                                        </datalist>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <button id="AddB" type="submit" class="btn btn-info btn-fill pull-right" href="#/appointments2" (click)="createnewapp()">
+                        Agregar
+                    </button>
+                    <a href="#/appointments">
+                        <button id="BackB" type="submit" class="btn btn-info btn-fill pull-right" href="#/appointments2">
+                            Atrás
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
