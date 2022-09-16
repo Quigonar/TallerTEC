@@ -20,6 +20,11 @@ import { ClientsService } from 'app/clients.service';
 import { AddWorkerComponent } from '../../addWorker/addWorker.component';
 import { EditWorkerComponent } from '../../editWorker/editWorker.component';
 import { WorkersService } from 'app/workers.service';
+import {NewAppointmentsComponent} from '../../appointments/newappointment.component';
+import { PrebillingComponent } from 'app/billing/prebilling.component';
+import { ModifyAppointmentsComponent } from 'app/appointments/modifyappointment.component';
+import { BillingService } from 'app/billingservice';
+import { CitaService } from 'app/citaservice';
 
 
 
@@ -41,11 +46,17 @@ import { WorkersService } from 'app/workers.service';
     AddClientComponent,
     EditClientComponent,
     AddWorkerComponent,
-    EditWorkerComponent
+    EditWorkerComponent,
+    NewAppointmentsComponent,
+    PrebillingComponent,
+    ModifyAppointmentsComponent,
+    
   ],
   providers: [
     ClientsService,
     WorkersService,
+    BillingService,
+    CitaService,
   ]
 })
 

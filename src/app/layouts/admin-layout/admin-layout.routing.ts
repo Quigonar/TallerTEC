@@ -10,6 +10,10 @@ import { AddClientComponent } from '../../addClient/addClient.component';
 import { EditClientComponent } from '../../editClient/editClient.component';
 import { AddWorkerComponent } from '../../addWorker/addWorker.component';
 import { EditWorkerComponent } from '../../editWorker/editWorker.component';
+import { PrebillingComponent } from 'app/billing/prebilling.component';
+import { NewAppointmentsComponent } from 'app/appointments/newappointment.component';
+import { ModifyAppointmentsComponent } from 'app/appointments/modifyappointment.component';
+
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'home',           component: HomeComponent },
@@ -22,4 +26,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'add-worker',      component: AddWorkerComponent },
     { path: 'edit-worker',     component: EditWorkerComponent },
     { path: 'appointments',   component: AppointmentsComponent },
+    { path:'prebilling', component:PrebillingComponent},
+    { path:'newappointment', component:NewAppointmentsComponent},
+    {path: 'modifyappointment', component:ModifyAppointmentsComponent},
 ];
