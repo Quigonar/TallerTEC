@@ -29,7 +29,7 @@ export class PrebillingComponent implements OnInit {
     var BackBut =document.getElementById("BackButton") as HTMLInputElement | null;
 
     if(CedulaEmp.value==""){
-      alert("Debe completar el espacio de empleado solocitados");
+      alert("Debe completar el espacio de empleado solocitado");
     }else{
       EmmtBut.disabled=true;
       CedulaEmp.disabled=true;
@@ -48,6 +48,7 @@ export class PrebillingComponent implements OnInit {
       this.api.addInvoice(this.invoice).subscribe(data => {
         console.log(data);
       })
+      alert("Factura generada correctamente, porfavor oprima el boton continuar")
     }
   }
 
