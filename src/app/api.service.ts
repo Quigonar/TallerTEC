@@ -5,6 +5,8 @@ import { AppointmentsListI } from './models/appointmentslist.interface';
 import { ResponseI } from './models/response.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs'
+import { BillListI } from './models/billlist.interface';
+import { ServiceI } from './models/service.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +31,11 @@ export class ApiService {
     let dir = this.url + "cliente/update"
     return this.http.post<ResponseI>(dir,client)
   }
+  deleteClient(client:ClientsListI):Observable<ResponseI>{
+    //console.log(client)
+    let dir = this.url + "cliente/delete"
+    return this.http.post<ResponseI>(dir,client)
+  }
 
   gTableWorkers():Observable<WorkersListI[]>{
     let dir = this.url + "trabajador/lista"
@@ -44,13 +51,18 @@ export class ApiService {
     let dir = this.url + "trabajador/update"
     return this.http.post<ResponseI>(dir,worker)
   }
+  deleteWorker(worker:WorkersListI):Observable<ResponseI>{
+    //console.log(worker)
+    let dir = this.url + "trabajador/delete"
+    return this.http.post<ResponseI>(dir,worker)
+  }
 
   gTableAppointments():Observable<AppointmentsListI[]>{
     let dir = this.url + "cita/lista"
     return this.http.get<AppointmentsListI[]>(dir)
   }
   addAppointment(appointment:AppointmentsListI):Observable<ResponseI>{
-    console.log(appointment)
+    //console.log(appointment)
     let dir = this.url + "cita/guardar"
     return this.http.post<ResponseI>(dir,appointment)
   }
@@ -59,15 +71,19 @@ export class ApiService {
     let dir = this.url + "cita/update"
     return this.http.post<ResponseI>(dir,appointment)
   }
+  deleteAppointment(appointment:AppointmentsListI):Observable<ResponseI>{
+    //console.log(appointment)
+    let dir = this.url + "cita/delete"
+    return this.http.post<ResponseI>(dir,appointment)
+  }
 
-  
-
-  //cliente/guardar
-  //cliente/editar
-  //trabajador/guardar
-  //trabajador/editar
-  //cita/lista
-  //cita/guardar
-  //cita/editar
-
+  gTableInvoices():Observable<BillListI[]>{
+    let dir = this.url + "factura/lista"
+    return this.http.get<BillListI[]>(dir)
+  }
+  addInvoice(invoice:BillListI):Observable<ResponseI>{
+    console.log(invoice)
+    let dir = this.url + "factura/guardar"
+    return this.http.post<ResponseI>(dir,invoice)
+  }
 }

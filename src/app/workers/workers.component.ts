@@ -11,7 +11,8 @@ import { ApiService } from '../api.service'
 
 export class WorkersComponent implements OnInit {
   public tableData1
-  public workers:string[][]
+  public worker:WorkersListI
+  public workerD:string[]
 
   constructor(public _workersService:WorkersService, private api:ApiService) { }
 
@@ -20,7 +21,14 @@ export class WorkersComponent implements OnInit {
   }
 
   public elimWorker(index: number) {
-    console.log('trying to eliminate worker: ' + index)
+    this._workersService.setWorker(this._workersService.getWorkers()[index]);
+    this.workerD = this._workersService.getWorker();
+    this.worker.ID = this.workerD[2];
+
+    this.api.deleteWorker(this.worker).subscribe(data => {
+      console.log(data);
+    })
+    this.ngOnInit();
   }
   
   ngOnInit() {
@@ -29,6 +37,17 @@ export class WorkersComponent implements OnInit {
       this._workersService.setTable(data);
     });
     this.tableData1 = this._workersService.getTable();
+    this.worker = {
+      FirstN: '',
+      LastN: '',
+      ID: '',
+      DateAdmission: '',
+      DateBirth: '',
+      Age: '',
+      Password: '',
+      Role: '',
+      Office: ''
+    }
   }
 
 }

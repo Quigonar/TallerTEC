@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CitaService } from 'app/citaservice';
 import { BillingService } from 'app/billingservice';
+import { BillListI } from 'app/models/billlist.interface';
+import { ApiService } from 'app/api.service';
+import { ServiceI } from 'app/models/service.interface';
 
 
 @Component({
@@ -12,31 +15,39 @@ export class PrebillingComponent implements OnInit {
 
   public CitaFact:string[];
   public Factura:string[];
+  public invoice:BillListI;
+  public service:ServiceI;
   
 
-  constructor(private _citaService:CitaService,private _billingService:BillingService) { }
+  constructor(private _citaService:CitaService, private _billingService:BillingService, private api:ApiService) { }
 
   public EmitirFact(){
-    var NameEmp = document.getElementById("FactNameEm") as HTMLInputElement | null;
-    var SurnameEmp= document.getElementById("FacSurnameEm") as HTMLInputElement | null;
+    //var NameEmp = document.getElementById("FactNameEm") as HTMLInputElement | null;
+    //var SurnameEmp= document.getElementById("FacSurnameEm") as HTMLInputElement | null;
     var CedulaEmp = document.getElementById("CedulaEmpFact") as HTMLInputElement | null;
     var EmmtBut =document.getElementById("BotonEmitir") as HTMLInputElement | null;
     var BackBut =document.getElementById("BackButton") as HTMLInputElement | null;
 
-    if((NameEmp.value=="")||(SurnameEmp.value=="")||(CedulaEmp.value=="")){
-      alert("Debe completar los espacios de empleado solocitados");
+    if(CedulaEmp.value==""){
+      alert("Debe completar el espacio de empleado solocitados");
     }else{
       EmmtBut.disabled=true;
-      NameEmp.disabled=true;
-      SurnameEmp.disabled=true;
       CedulaEmp.disabled=true;
 
       BackBut.innerHTML="Continuar";
-      this.Factura[9]=NameEmp.value;
-      this.Factura[10]=SurnameEmp.value;
-      this.Factura[11]=CedulaEmp.value;
+      this.invoice.IdCliente = this.CitaFact[3];
+      this.invoice.IdTrabajador = CedulaEmp.value;
+      this.invoice.AppointmentN = this.CitaFact[0];
+      this.invoice.DateTime = this.CitaFact[7];
+      this.invoice.LicenseP = this.CitaFact[4];
+      this.invoice.Service = this.CitaFact[5];
+      this.invoice.ClientN = this.CitaFact[1];
+      this.invoice.ClientLN = this.CitaFact[2];
+      this.invoice.Office = this.CitaFact[6];
 
-      this._billingService.appendFacturas(this.Factura);
+      this.api.addInvoice(this.invoice).subscribe(data => {
+        console.log(data);
+      })
     }
   }
 
@@ -57,7 +68,6 @@ export class PrebillingComponent implements OnInit {
     var SucursalCita = document.getElementById("SucursalFact") as HTMLInputElement | null;
     var ServicioCita = document.getElementById("ServicioFact") as HTMLInputElement | null;
     var PriceAmmt=document.getElementById("Precio") as HTMLInputElement | null;
-    
 
     NumCitas.value=this.CitaFact[0];
     NameClientCita.value=this.CitaFact[1];
@@ -67,18 +77,42 @@ export class PrebillingComponent implements OnInit {
     ServicioCita.value=this.CitaFact[5];
     SucursalCita.value=this.CitaFact[6];
     FechayHoraCita.value=this.CitaFact[7];
-    PriceAmmt.innerHTML="Price: 1234567890";
+    //PriceAmmt.innerHTML="Price: 1234567890";
+    /*this.service = {
+      serviceN:'',
+      serviceP:''
+    }
 
-    this.Factura[0]=this.CitaFact[0];
+    this.service.serviceN = ServicioCita.value*/
+    /*this.api.getServicePrice(this.service).subscribe(data => {
+      PriceAmmt.innerHTML="Price: " + data;
+    })*/
+
+    /*this.Factura[0]=this.CitaFact[0];
     this.Factura[1]=this.CitaFact[1];
     this.Factura[2]=this.CitaFact[2];
     this.Factura[3]=this.CitaFact[3];
     this.Factura[4]=this.CitaFact[4];
     this.Factura[5]=this.CitaFact[5];
     this.Factura[6]=this.CitaFact[6];
-    this.Factura[7]=this.CitaFact[7];
-    this.Factura[8]="1234567890";
-    
+    this.Factura[7]=this.CitaFact[7];*/
+
+    this.invoice = {
+      Billnum:'',
+      ClientN:'',
+      ClientLN:'',
+      EmployeeN:'',
+      EmployeeLN:'',
+      IdTrabajador:'',
+      AppointmentN:'',
+      DateTime:'',
+      Service:'',
+      IdCliente:'',
+      LicenseP:'',
+      Office:'',
+      Price:'',
+      IdServicio:''
+    }
   }
 
 }

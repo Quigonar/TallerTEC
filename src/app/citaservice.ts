@@ -30,7 +30,6 @@ export class CitaService {
   setTable(citas:AppointmentsListI[]){
     this.tableData.dataRows = []
     for (var cita of citas) {
-      console.log(cita.Service)
       this.tableData.dataRows.push([cita.AppointmentN,cita.ClientN,cita.ClientLN,cita.ClientID,cita.LicenseP,cita.Service,cita.Office,cita.DateTime]) 
     }
   }

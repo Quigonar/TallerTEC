@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'app/api.service';
 import { BillingService } from 'app/billingservice';
 
 
@@ -21,9 +22,13 @@ export class BillingComponent implements OnInit {
 
   public tableData1: TableData;
 
-  constructor(public _citaBilling:BillingService) { }
+  constructor(public _citaBilling:BillingService, private api:ApiService) { }
 
   ngOnInit() {
+    this.api.gTableInvoices().subscribe(data => {
+      console.log(data)
+      this._citaBilling.setTable(data)
+    });
     this.tableData1 = this._citaBilling.getTable();
   }
 
